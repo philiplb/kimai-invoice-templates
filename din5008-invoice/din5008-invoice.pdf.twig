@@ -304,13 +304,15 @@ mpdf-->
                 </tr>
             {% endblock %}
             {% block invoice_details_customer_vatid %}
-                <tr>
-                    <th class="invoice-details-label">{{ 'vat_id'|trans }}:</th>
-                    <td class="invoice-details-value">{{ model.customer.vatId }}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">&nbsp;</td>
-                </tr>
+                {% if model.customer.vatId is not empty %}
+                    <tr>
+                        <th class="invoice-details-label">{{ 'vat_id'|trans }}:</th>
+                        <td class="invoice-details-value">{{ model.customer.vatId }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">&nbsp;</td>
+                    </tr>
+                {% endif %}
             {% endblock %}
             {% block invoice_details_contact %}
                 {% if model.template.contact is not empty %}
